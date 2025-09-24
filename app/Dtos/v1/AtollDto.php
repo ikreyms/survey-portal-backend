@@ -2,22 +2,17 @@
 
 namespace App\Dtos\v1;
 
-use Spatie\LaravelData\Data;
 use Spatie\LaravelData\Attributes\MapInputName;
+use Spatie\LaravelData\Data;
 
-class IslandDto extends Data
+class AtollDto extends Data
 {
     public function __construct(
         public int $id,
 
-        #[MapInputName('f_code')]
-        public string $fCode,
+        public string $name,
 
-        public ?string $name,
-
-        public ?AtollDto $atoll,
-
-        public ?IslandCategoryDto $category,
+        public string $abbreviation,
 
         #[MapInputName('created_at')]
         public string $createdAt,
