@@ -1,7 +1,7 @@
 <?php
 
 use App\Http\Controllers\Api\v1\IslandController;
-use App\Http\Controllers\IslandCategoryController;
+use App\Http\Controllers\Api\v1\IslandCategoryController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
