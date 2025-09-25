@@ -23,5 +23,6 @@ class DatabaseSeeder extends Seeder
         $this->call(AtollSeeder::class);
         $this->call(IslandCategorySeeder::class);
         $this->call(IslandSeeder::class);
+        $this->call(AppSettingSeeder::class);
     }
 }

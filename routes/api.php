@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Api\v1\IslandController;
 use App\Http\Controllers\Api\v1\IslandCategoryController;
+use App\Http\Controllers\AppSettingController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -12,4 +13,5 @@ use Illuminate\Support\Facades\Route;
 Route::group(['prefix' => 'v1'], function() {
     Route::apiResource('islands', IslandController::class);
     Route::apiResource('island-categories', IslandCategoryController::class);
+    Route::apiResource('app-settings', AppSettingController::class);
 });
