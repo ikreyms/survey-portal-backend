@@ -13,5 +13,9 @@ use Illuminate\Support\Facades\Route;
 Route::group(['prefix' => 'v1'], function() {
     Route::apiResource('islands', IslandController::class);
     Route::apiResource('island-categories', IslandCategoryController::class);
-    Route::apiResource('app-settings', AppSettingController::class);
+
+    Route::controller(AppSettingController::class)->group(function () {
+        Route::put('app-settings', 'update');
+        Route::get('app-settings', 'index');
+    });
 });

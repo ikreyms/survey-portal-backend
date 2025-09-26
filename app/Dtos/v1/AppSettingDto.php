@@ -11,12 +11,7 @@ class AppSettingDto extends Data
         public int $id,
 
         public string $name,
-        public string $value,
 
-        #[MapInputName('created_at')]
-        public string $createdAt,
-
-        #[MapInputName('updated_at')]
-        public string $updatedAt,
+        public string|array|int $value,
     ) {}
 }

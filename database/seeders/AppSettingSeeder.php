@@ -18,8 +18,6 @@ class AppSettingSeeder extends Seeder
                 'officeName' => 'MLSA',
                 'appName'   => 'Survey Portal',
             ]),
-            'created_at' => now(),
-            'updated_at' => now(),
         ]);
 
         \DB::table('app_settings')->insert([
@@ -27,8 +25,6 @@ class AppSettingSeeder extends Seeder
             'value' => json_encode([
                 'activeNumberFormatId' => 1,
             ]),
-            'created_at' => now(),
-            'updated_at' => now(),
         ]);
     }
 }
