@@ -23,7 +23,7 @@ class AppSettingSeeder extends Seeder
         \DB::table('app_settings')->insert([
             'name' => 'plates',
             'value' => json_encode([
-                'activeNumberFormatId' => 1,
+                'activePlateNumberFormatId' => 1,
             ]),
         ]);
     }
