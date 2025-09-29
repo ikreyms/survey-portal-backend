@@ -17,7 +17,7 @@ return new class extends Migration
             $table->integer('start');
             $table->integer('end');
 
-            $table->foreignId('plate_format_id')->constrained('plate_format', 'id')->cascadeOnDelete();
+            $table->foreignId('plate_format_id')->constrained('plate_formats', 'id')->cascadeOnDelete();
 
             $table->softDeletes();
             $table->timestamps();
