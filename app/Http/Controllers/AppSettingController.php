@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Dtos\v1\AppSettingDto;
+use App\Http\Requests\v1\UpdateAppSettingRequest;
 use App\Models\AppSetting;
 use Illuminate\Http\Request;
 
@@ -13,7 +14,7 @@ class AppSettingController extends Controller
         return AppSettingDto::collect(AppSetting::all());
     }
 
-    public function update(Request $request)
+    public function update(UpdateAppSettingRequest $request)
     {
         $settings = $request->all();
 
