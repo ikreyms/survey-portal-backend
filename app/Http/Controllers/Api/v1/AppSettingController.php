@@ -1,10 +1,11 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Api\v1;
 
 use App\Dtos\v1\AppSettingDto;
 use App\Http\Requests\v1\UpdateAppSettingRequest;
 use App\Models\AppSetting;
+use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
 class AppSettingController extends Controller

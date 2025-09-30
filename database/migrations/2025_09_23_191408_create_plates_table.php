@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('plates', function (Blueprint $table) {
             $table->id();
-            $table->integer('number');
+            $table->string('number')->unique();
 
             $table->foreignId('plate_format_id')->constrained('plate_formats', 'id')->cascadeOnDelete();
 

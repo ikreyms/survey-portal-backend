@@ -24,7 +24,7 @@ return new class extends Migration
             $table->double('mwl_peri')->nullable();
             $table->double('mwl_area')->nullable();
 
-            $table->foreignId('island_id')->constrained('islands', 'id')->cascadeOnDelete();
+            $table->foreignId('island_id')->unique()->constrained('islands', 'id')->cascadeOnDelete();
 
             $table->softDeletes();
             $table->timestamps();

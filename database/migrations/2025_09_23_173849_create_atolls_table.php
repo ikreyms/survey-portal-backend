@@ -13,8 +13,8 @@ return new class extends Migration
     {
         Schema::create('atolls', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
-            $table->string('abbreviation');
+            $table->string('name')->unique();
+            $table->string('abbreviation')->unique();
 
             $table->softDeletes();
             $table->timestamps();

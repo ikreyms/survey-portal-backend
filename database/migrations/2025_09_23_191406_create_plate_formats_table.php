@@ -13,8 +13,8 @@ return new class extends Migration
     {
         Schema::create('plate_formats', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
-            $table->string('format');
+            $table->string('name')->unique();
+            $table->string('format')->unique();
 
             $table->softDeletes();
             $table->timestamps();
