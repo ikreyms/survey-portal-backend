@@ -24,5 +24,6 @@ class DatabaseSeeder extends Seeder
         $this->call(IslandCategorySeeder::class);
         $this->call(IslandSeeder::class);
         $this->call(AppSettingSeeder::class);
+        $this->call(PlateFormatSeeder::class);
     }
 }
