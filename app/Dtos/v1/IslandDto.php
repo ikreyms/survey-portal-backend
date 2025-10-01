@@ -2,11 +2,14 @@
 
 namespace App\Dtos\v1;
 
+use App\Traits\HasTimestamps;
 use Spatie\LaravelData\Data;
 use Spatie\LaravelData\Attributes\MapInputName;
 
 class IslandDto extends Data
 {
+    use HasTimestamps;
+
     public function __construct(
         public int $id,
 
@@ -18,11 +21,5 @@ class IslandDto extends Data
         public ?AtollDto $atoll,
 
         public ?IslandCategoryDto $category,
-
-        #[MapInputName('created_at')]
-        public string $createdAt,
-
-        #[MapInputName('updated_at')]
-        public string $updatedAt,
     ) {}
 }
