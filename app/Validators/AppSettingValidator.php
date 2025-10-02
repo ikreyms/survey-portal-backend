@@ -10,7 +10,7 @@ class AppSettingValidator
     private static array $generalSettingsValidationRules = [
         'rules' => [
             'appName' => ['required', 'string', 'max:25'],
-            'officeName' => ['required', 'string'],
+            'officeName' => ['required', 'string', 'max:23'],
         ],
         'messages' => []
     ];
