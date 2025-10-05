@@ -11,11 +11,11 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('app_settings', function (Blueprint $table) {
+        Schema::create('user_preferences', function (Blueprint $table) {
             $table->id();
-            $table->string('office_name')->unique();
-            $table->string('app_name')->unique();
-            $table->foreignId('active_plate_format_id')->nullable()->constrained('plate_formats', 'id')->nullOnDelete();
+            $table->string('plate_range_input_type');
+            
+            $table->foreignId('user_id')->constrained();
 
             $table->timestamps();
         });
@@ -26,6 +26,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('app_settings');
+        Schema::dropIfExists('user_preferences');
     }
 };

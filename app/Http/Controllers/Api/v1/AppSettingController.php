@@ -12,27 +12,24 @@ class AppSettingController extends Controller
 {
     public function index()
     {
-        return AppSettingDto::collect(AppSetting::all());
+        return response()->json(AppSettingDto::from(AppSetting::first()));
     }
 
     public function update(UpdateAppSettingRequest $request)
     {
-        $settings = $request->all();
+        $dto = AppSettingDto::from($request->validated());
 
-        $sql = "UPDATE app_settings SET value = CASE name ";
-        $names = [];
+        $success = AppSetting::find(1)->update([
+            'office_name' => $dto->officeName,
+            'app_name' => $dto->appName,
+            'active_plate_format_id' => $dto->activePlateFormatId,
+            'updated_at' => now(),
+        ]);
 
-        foreach ($settings as $setting) {
-            $name = $setting['name'];
-            $value = json_encode($setting['value']);
-            $sql .= "WHEN '{$name}' THEN '{$value}' ";
-            $names[] = "'{$name}'";
+        return $success;
+
+        if ($success) {
+            return response()->noContent();
         }
-
-        $sql .= "END WHERE name IN (" . implode(',', $names) . ")";
-
-        \DB::statement($sql);
-
-        return response()->noContent();
     }
 }

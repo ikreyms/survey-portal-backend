@@ -5,17 +5,16 @@ namespace Database\Seeders;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
-class AppSettingSeeder extends Seeder
+class UserPreferenceSeeder extends Seeder
 {
     /**
      * Run the database seeds.
      */
     public function run(): void
     {
-        \DB::table('app_settings')->insert([
-            'office_name' => 'MLSA',
-            'app_name' => 'Survey Portal',
-            'active_plate_format_id' => 1,
+        \DB::table('user_preferences')->insert([
+            'plate_range_input_type' => 'text',
+            'user_id' => 1,
             'created_at' => now(),
             'updated_at' => now(),
         ]);
