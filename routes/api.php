@@ -17,12 +17,13 @@ Route::group(['prefix' => 'v1'], function() {
     Route::apiResource('island-categories', IslandCategoryController::class);
 
     Route::controller(AppSettingController::class)->group(function () {
-        Route::put('app-settings', 'update');
         Route::get('app-settings', 'index');
+        Route::put('app-settings', 'update');
     });
 
     Route::controller(UserPreferenceController::class)->group(function () {
         Route::get('user-preferences', 'index');
+        Route::put('user-preferences/{user}', 'update');
     });
 
     Route::apiResource('plate-formats', PlateFormatController::class);

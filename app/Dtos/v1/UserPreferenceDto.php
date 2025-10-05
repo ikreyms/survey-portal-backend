@@ -13,5 +13,8 @@ class UserPreferenceDto extends Data
     public function __construct(
         #[MapInputName('plate_range_input_type')]
         public ?string $rangeSelectionMethod,
+
+        #[MapInputName('user_id')]
+        public ?int $userId,
     ) {}
 }

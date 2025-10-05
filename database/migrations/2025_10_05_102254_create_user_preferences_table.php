@@ -14,8 +14,8 @@ return new class extends Migration
         Schema::create('user_preferences', function (Blueprint $table) {
             $table->id();
             $table->string('plate_range_input_type');
-            
-            $table->foreignId('user_id')->constrained();
+
+            $table->foreignId('user_id')->unique()->constrained();
 
             $table->timestamps();
         });
