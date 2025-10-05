@@ -12,7 +12,7 @@ class AppSettingController extends Controller
 {
     public function index()
     {
-        return response()->json(AppSettingDto::from(AppSetting::first()));
+        return AppSettingDto::from(AppSetting::first());
     }
 
     public function update(UpdateAppSettingRequest $request)
