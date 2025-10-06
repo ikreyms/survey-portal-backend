@@ -3,7 +3,6 @@
 namespace App\Services\v1;
 
 use App\Dtos\v1\AppSettingDto;
-use App\Models\AppSetting;
 use App\Repositories\v1\AppSettingRepository;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
@@ -13,11 +12,11 @@ class AppSettingService
         private AppSettingRepository $appSettingRepository,
     ) {}
 
-    public function viewAll(): AppSettingDto
+    public function viewOne(): AppSettingDto
     {
-        $firstAppSetting = $this->appSettingRepository->getFirst();
-        if (!$firstAppSetting) throw new NotFoundHttpException('App settings not found');
-        return AppSettingDto::from($firstAppSetting);
+        $appSetting = $this->appSettingRepository->getFirst();
+        if (!$appSetting) throw new NotFoundHttpException('App settings not found');
+        return AppSettingDto::from($appSetting);
     }
 
     public function updateFirst(AppSettingDto $dto): bool

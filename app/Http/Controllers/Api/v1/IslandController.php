@@ -2,14 +2,9 @@
 
 namespace App\Http\Controllers\Api\v1;
 
-use App\Dtos\v1\IslandDto;
 use App\Http\Controllers\Controller;
-use App\Models\Island;
 use App\Services\v1\IslandService;
 use Illuminate\Http\Request;
-use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
-use Spatie\QueryBuilder\QueryBuilder;
-use Spatie\QueryBuilder\AllowedFilter;
 
 class IslandController extends Controller
 {
@@ -22,14 +17,12 @@ class IslandController extends Controller
         $perPage = $request->integer('rowsPerPage', 10);
         $page = $request->integer('page', 1);
 
-        $islandsPaginated = $this->islandService->getAllPaginated($perPage, $page);
-        return response()->json(IslandDto::collect($islandsPaginated));
+        return $this->islandService->viewAllPaginated($perPage, $page);
     }
 
-    public function show(string $fCode): IslandDto
+    public function show(string $fCode)
     {
-        $island = $this->islandService->viewOne($fCode);
-        return IslandDto::from($island);
+        return $this->islandService->viewOne($fCode);
     }
 
 }

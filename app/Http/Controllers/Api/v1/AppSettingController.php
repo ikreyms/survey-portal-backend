@@ -15,7 +15,7 @@ class AppSettingController extends Controller
 
     public function index()
     {
-        return $this->appSettingService->viewAll();
+        return $this->appSettingService->viewOne();
     }
 
     public function update(UpdateAppSettingRequest $request)

@@ -3,7 +3,6 @@
 namespace App\Services\v1;
 
 use App\Dtos\v1\IslandCategoryDto;
-use App\Models\IslandCategory;
 use App\Repositories\v1\IslandCategoryRepository;
 use Illuminate\Database\Eloquent\Collection;
 

@@ -22,7 +22,7 @@ Route::group(['prefix' => 'v1'], function() {
     });
 
     Route::controller(UserPreferenceController::class)->group(function () {
-        Route::get('user-preferences', 'index');
+        Route::get('user-preferences/{user}', 'show');
         Route::put('user-preferences/{user}', 'update');
     });
 
