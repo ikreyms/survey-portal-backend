@@ -4,32 +4,25 @@ namespace App\Http\Controllers\Api\v1;
 
 use App\Dtos\v1\AppSettingDto;
 use App\Http\Requests\v1\UpdateAppSettingRequest;
-use App\Models\AppSetting;
 use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
+use App\Services\v1\AppSettingService;
 
 class AppSettingController extends Controller
 {
+    public function __construct(
+        private AppSettingService $appSettingService,
+    ) {}
+
     public function index()
     {
-        return AppSettingDto::from(AppSetting::first());
+        return $this->appSettingService->viewAll();
     }
 
     public function update(UpdateAppSettingRequest $request)
     {
         $dto = AppSettingDto::from($request->validated());
-
-        $success = AppSetting::find(1)->update([
-            'office_name' => $dto->officeName,
-            'app_name' => $dto->appName,
-            'active_plate_format_id' => $dto->activePlateFormatId,
-            'updated_at' => now(),
-        ]);
-
-        return $success;
-
-        if ($success) {
-            return response()->noContent();
-        }
+        $success = $this->appSettingService->updateFirst($dto);
+        if ($success) return response()->noContent();
+        return response()->json(['message' => 'Update failed'], 500);
     }
 }

@@ -2,15 +2,18 @@
 
 namespace App\Http\Controllers\Api\v1;
 
-use App\Dtos\v1\IslandCategoryDto;
-use App\Models\IslandCategory;
 use App\Http\Controllers\Controller;
+use App\Services\v1\IslandCategoryService;
 
 class IslandCategoryController extends Controller
 {
+    public function __construct(
+        private IslandCategoryService $islandCategoryService,
+    ) {}
+
     public function index()
     {
-        return IslandCategoryDto::collect(IslandCategory::all());
+        return $this->islandCategoryService->viewAll();
     }
 
 }
