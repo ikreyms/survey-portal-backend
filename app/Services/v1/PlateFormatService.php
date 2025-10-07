@@ -20,8 +20,17 @@ class PlateFormatService
 
     public function viewAll(): Collection
     {
-        // return PlateFormatDto::collect($this->plateFormatRepository->getAll(with: ['definedRanges', 'availableRanges']));
-        $plateFormats = $this->plateFormatRepository->getAll(with: ['ranges.availableRanges']);
-        return $plateFormats;
+        try {
+            // return PlateFormatDto::collect($this->plateFormatRepository->getAll(with: ['definedRanges', 'availableRanges']));
+            $plateFormats = $this->plateFormatRepository->getAll(with: ['ranges.availableRanges']);
+            return PlateFormatDto::collect($plateFormats);
+            // return $plateFormats;
+
+        } catch (\Exception $e) {
+            // Log the exception message
+            \Log::error('Error fetching plate formats: ' . $e->getMessage());
+            // Optionally, rethrow the exception or return an empty collection
+            throw $e; // or return collect();
+        }
     }
 }

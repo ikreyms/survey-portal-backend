@@ -12,10 +12,11 @@ class PlateFormatDto extends Data
     public function __construct(
         public ?int $id,
 
-        public ?string $name,
+        public string $name,
 
         public string $prefix,
 
-        public ?PlateRangesDto $ranges,
+        /** @var DataCollection<int, PlateFormatRangeDto> */
+        public array $ranges,
     ) {}
 }
