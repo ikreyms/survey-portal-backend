@@ -1,4 +1,4 @@
-<?php
+<?php 
 
 namespace App\Services\v1;
 
@@ -12,8 +12,16 @@ class PlateFormatService
         private PlateFormatRepository $plateFormatRepository,
     ) {}
 
+    public function createOne(PlateFormatDto $dto): PlateFormatDto
+    {
+        $format = $this->plateFormatRepository->createOne($dto);
+        return PlateFormatDto::from($format);
+    }
+
     public function viewAll(): Collection
     {
-        return PlateFormatDto::collect($this->plateFormatRepository->getAll());
+        // return PlateFormatDto::collect($this->plateFormatRepository->getAll(with: ['definedRanges', 'availableRanges']));
+        $plateFormats = $this->plateFormatRepository->getAll(with: ['ranges.availableRanges']);
+        return $plateFormats;
     }
 }

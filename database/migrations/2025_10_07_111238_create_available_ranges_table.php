@@ -11,12 +11,13 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('plate_formats', function (Blueprint $table) {
+        Schema::create('available_ranges', function (Blueprint $table) {
             $table->id();
-            $table->string('name')->unique();
-            $table->string('prefix')->default('PSM');
+            $table->integer('start');
+            $table->integer('end');
 
-            $table->softDeletes();
+            $table->foreignId('plate_format_range_id')->constrained('plate_format_ranges', 'id')->cascadeOnDelete();
+
             $table->timestamps();
         });
     }
@@ -26,6 +27,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('plate_formats');
+        Schema::dropIfExists('available_ranges');
     }
 };

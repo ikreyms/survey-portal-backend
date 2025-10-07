@@ -4,10 +4,10 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Plate extends Model
+class AvailableRange extends Model
 {
     public function plateFormat()
     {
-        return $this->belongsTo(PlateFormat::class);
+        return $this->belongsTo(PlateFormatRange::class);
     }
 }

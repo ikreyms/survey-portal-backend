@@ -7,8 +7,8 @@ use Spatie\LaravelData\Attributes\MapInputName;
 trait HasTimestamps
 {
     #[MapInputName('created_at')]
-    public string $createdAt;
+    public ?string $createdAt;
 
     #[MapInputName('updated_at')]
-    public string $updatedAt;
+    public ?string $updatedAt;
 }

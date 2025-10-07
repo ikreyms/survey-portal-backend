@@ -10,10 +10,12 @@ class PlateFormatDto extends Data
     use HasTimestamps;
 
     public function __construct(
-        public int $id,
+        public ?int $id,
 
-        public string $name,
+        public ?string $name,
 
-        public string $format,
+        public string $prefix,
+
+        public ?PlateRangesDto $ranges,
     ) {}
 }
